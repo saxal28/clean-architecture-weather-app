@@ -19,7 +19,7 @@ class WeatherViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _state = mutableStateOf(WeatherState())
-    private val state: State<WeatherState> get() = _state
+    val state: State<WeatherState> get() = _state
 
     init {
         getWeather()

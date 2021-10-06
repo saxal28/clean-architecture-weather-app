@@ -26,7 +26,7 @@ class WeatherViewModel @Inject constructor(
     }
 
     private fun getWeather(){
-        fetchWeatherByZipCodeUseCase(62229).onEach { result ->
+        fetchWeatherByZipCodeUseCase(62269).onEach { result ->
             when(result) {
                 is Result.Success -> {
                     _state.value = WeatherState(data = result.data)

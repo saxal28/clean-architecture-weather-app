@@ -1,5 +1,6 @@
 package com.saxaindustries.weathercleanarch.domain.usecase
 
+import android.util.Log
 import com.saxaindustries.weathercleanarch.common.Result
 import com.saxaindustries.weathercleanarch.data.api.dto.toModel
 import com.saxaindustries.weathercleanarch.domain.model.Weather

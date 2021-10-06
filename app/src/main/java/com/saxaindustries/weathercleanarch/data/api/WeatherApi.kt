@@ -1,10 +1,15 @@
 package com.saxaindustries.weathercleanarch.data.api
 
+import com.saxaindustries.weathercleanarch.common.Constants
 import com.saxaindustries.weathercleanarch.data.api.dto.WeatherDto
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface WeatherApi {
-    @GET("weather?zip={zipCode}&appid=4bd59f1d9351b7167a43254cfc772ef3")
-    suspend fun getWeatherByZipCode(@Path("zipCode") zipCode: Int = 62269): WeatherDto
+    @GET("weather")
+    suspend fun getWeatherByZipCode(
+        @Query("zip") zip: Int = 62269,
+        @Query("appid") appId: String = Constants.API_KEY
+    ): WeatherDto
 }

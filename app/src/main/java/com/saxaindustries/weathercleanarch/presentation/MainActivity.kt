@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.material.MaterialTheme
+import com.saxaindustries.weathercleanarch.presentation.components.PageLoader
 import com.saxaindustries.weathercleanarch.presentation.weather.WeatherViewModel
-import com.saxaindustries.weathercleanarch.presentation.weather.components.MessageCard
+import com.saxaindustries.weathercleanarch.presentation.weather.components.WeatherScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,7 +17,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MessageCard(viewModel)
+            val state = viewModel.state.value
+            MaterialTheme {
+                WeatherScreen(state)
+
+                if (state.isLoading) {
+                    PageLoader()
+                }
+
+            }
         }
     }
 }

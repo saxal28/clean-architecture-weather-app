@@ -1,6 +1,7 @@
 package com.saxaindustries.weathercleanarch.data.api.dto
 
 import com.saxaindustries.weathercleanarch.domain.model.Weather
+import kotlin.math.roundToInt
 
 data class WeatherDto(
     val base: String,
@@ -19,10 +20,7 @@ data class WeatherDto(
 )
 
 private val Double.toFahrenheit get() = (this - 273.15) * 9/5 + 32
-
-val WeatherDto.degreesInFahrenheit get() = main.temp.toFahrenheit
-
 val WeatherDto.toModel get() = Weather(
     city = name,
-    temperature = degreesInFahrenheit
+    temperature = main.temp.toFahrenheit.roundToInt()
 )

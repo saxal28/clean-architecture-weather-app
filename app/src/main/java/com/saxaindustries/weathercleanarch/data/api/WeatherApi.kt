@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface WeatherApi {
     @GET("weather")
     suspend fun getWeatherByZipCode(
-        @Query("zip") zip: Int = 62269,
+        @Query("zip") zip: Int,
         @Query("appid") appId: String = Constants.API_KEY
     ): WeatherDto
 }

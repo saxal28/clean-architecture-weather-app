@@ -1,6 +1,5 @@
 package com.saxaindustries.weathercleanarch.domain.usecase
 
-import android.util.Log
 import com.saxaindustries.weathercleanarch.common.Result
 import com.saxaindustries.weathercleanarch.data.api.dto.toModel
 import com.saxaindustries.weathercleanarch.domain.model.Weather
@@ -17,6 +16,7 @@ class FetchWeatherByZipCodeUseCase @Inject constructor(
         try {
             emit(Result.Loading<Weather>())
             val result = repository.getWeather(zipCode).toModel
+            kotlinx.coroutines.delay(5000)
             emit(Result.Success(result))
         } catch (e: Exception) {
             emit(Result.Error<Weather>(e.localizedMessage ?: "Error Loading Zip Code"))

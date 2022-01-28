@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val state = viewModel.state.value
             MaterialTheme {
+
                 WeatherScreen(state)
 
                 if (state.isLoading) {

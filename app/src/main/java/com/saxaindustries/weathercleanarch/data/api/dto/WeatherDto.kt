@@ -19,8 +19,8 @@ data class WeatherDto(
     val wind: Wind
 )
 
-private val Double.toFahrenheit get() = (this - 273.15) * 9/5 + 32
-val WeatherDto.toModel get() = Weather(
+private val Double.toFahrenheit get() = ((this - 273.15) * 9/5 + 32).roundToInt()
+val WeatherDto.model get() = Weather(
     city = name,
-    temperature = main.temp.toFahrenheit.roundToInt()
+    temperature = main.temp.toFahrenheit
 )
